@@ -142,7 +142,7 @@ function Toast({ icon, color, bg, border, message, action, onDismiss }) {
         padding: "10px 16px",
         borderRadius: 10,
         background: bg,
-        border: 1px solid ${border},
+        border: '1px solid ${border},
         color,
         fontSize: 13,
         fontWeight: 500,
