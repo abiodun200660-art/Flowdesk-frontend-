@@ -22,19 +22,16 @@ export default function ServiceWorkerRegistrar() {
           scope: "/",
         });
 
-        // SW already active and controlling the page
         if (registration.active && !navigator.serviceWorker.controller) {
           setOfflineReady(true);
           setTimeout(() => setOfflineReady(false), 4000);
         }
 
-        // A new SW is waiting to activate
         if (registration.waiting) {
           setWaitingWorker(registration.waiting);
           setUpdateAvailable(true);
         }
 
-        // Watch for a new SW installing
         registration.addEventListener("updatefound", () => {
           const newWorker = registration.installing;
           if (!newWorker) return;
@@ -44,7 +41,6 @@ export default function ServiceWorkerRegistrar() {
               newWorker.state === "installed" &&
               navigator.serviceWorker.controller
             ) {
-              // New content available, old SW still serving
               setWaitingWorker(newWorker);
               setUpdateAvailable(true);
             }
@@ -56,7 +52,6 @@ export default function ServiceWorkerRegistrar() {
           });
         });
 
-        // Reload the page once the new SW takes control
         let refreshing = false;
         navigator.serviceWorker.addEventListener("controllerchange", () => {
           if (refreshing) return;
@@ -64,7 +59,6 @@ export default function ServiceWorkerRegistrar() {
           window.location.reload();
         });
 
-        // Periodically check for updates (every 60 seconds while tab is open)
         const interval = setInterval(() => {
           registration.update().catch(() => {});
         }, 60_000);
@@ -77,12 +71,9 @@ export default function ServiceWorkerRegistrar() {
 
     register();
 
-    return () => {
-      // Cleanup is handled inside register's returned fn
-    };
+    return () => {};
   }, []);
 
-  // Tell the waiting SW to skip waiting and take control
   function applyUpdate() {
     if (!waitingWorker) return;
     waitingWorker.postMessage({ type: "SKIP_WAITING" });
@@ -95,7 +86,6 @@ export default function ServiceWorkerRegistrar() {
     setDismissed(true);
   }
 
-  // ── Offline-ready toast ───────────────────────────────────────────────────
   if (offlineReady) {
     return (
       <Toast
@@ -109,7 +99,6 @@ export default function ServiceWorkerRegistrar() {
     );
   }
 
-  // ── Update-available toast ────────────────────────────────────────────────
   if (updateAvailable && !dismissed) {
     return (
       <Toast
@@ -126,7 +115,7 @@ export default function ServiceWorkerRegistrar() {
 
   return null;
 }
-// ── Reusable toast bubble ─────────────────────────────────────────────────────
+
 function Toast({ icon, color, bg, border, message, action, onDismiss }) {
   return (
     <div
@@ -142,7 +131,7 @@ function Toast({ icon, color, bg, border, message, action, onDismiss }) {
         padding: "10px 16px",
         borderRadius: 10,
         background: bg,
-        border: `1px solid ${border},
+        border: `1px solid ${border}`,
         color,
         fontSize: 13,
         fontWeight: 500,
@@ -165,8 +154,8 @@ function Toast({ icon, color, bg, border, message, action, onDismiss }) {
           style={{
             padding: "4px 12px",
             borderRadius: 6,
-            border: 1px solid ${color}66,
-            background: ${color}18,
+            border: `1px solid ${color}66`,
+            background: `${color}18`,
             color,
             fontSize: 12,
             fontWeight: 700,
@@ -203,12 +192,12 @@ function Toast({ icon, color, bg, border, message, action, onDismiss }) {
         ×
       </button>
 
-      <style>{
+      <style>{`
         @keyframes swToastIn {
           from { opacity: 0; transform: translateX(-50%) translateY(12px); }
           to   { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
-      }</style>
+      `}</style>
     </div>
   );
 }

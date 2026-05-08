@@ -5,9 +5,9 @@ import { useWorkspace } from '@/context/WorkspaceContext'
 
 export default function useTasks(filters = {}) {
   const { currentWorkspace } = useWorkspace()
-  const [tasks, setTasks]   = useState([])
+  const [tasks, setTasks]     = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError]   = useState(null)
+  const [error, setError]     = useState(null)
 
   const fetchTasks = useCallback(async () => {
     if (!currentWorkspace?._id) return
@@ -18,7 +18,7 @@ export default function useTasks(filters = {}) {
         workspace: currentWorkspace._id,
         ...filters,
       })
-      const { data } = await api.get(`/api/tasks?${params})
+      const { data } = await api.get(`/api/tasks?${params}`)
       setTasks(data.tasks || [])
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to load tasks')
@@ -59,20 +59,20 @@ export default function useTasks(filters = {}) {
   }
 
   const updateTask = async (id, payload) => {
-    const { data } = await api.put(/api/tasks/${id}, payload)
+    const { data } = await api.put(`/api/tasks/${id}`, payload)
     setTasks((prev) => prev.map((t) => (t._id === id ? data.task : t)))
     return data.task
   }
 
   const deleteTask = async (id) => {
-    await api.delete(/api/tasks/${id})
+    await api.delete(`/api/tasks/${id}`)
     setTasks((prev) => prev.filter((t) => t._id !== id))
   }
 
   const updateStatus = async (id, status) => {
     setTasks((prev) => prev.map((t) => (t._id === id ? { ...t, status } : t)))
     try {
-      await api.put(/api/tasks/${id}, { status })
+      await api.put(`/api/tasks/${id}`, { status })
     } catch {
       fetchTasks()
     }

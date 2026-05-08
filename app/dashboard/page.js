@@ -22,17 +22,17 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (!currentWorkspace?._id) return
-    const fetch = async () => {
+    const fetchStats = async () => {
       setLoading(true)
       try {
         const { data } = await api.get(
-          `/api/analytics/overview?workspace=${currentWorkspace._id}
+          `/api/analytics/overview?workspace=${currentWorkspace._id}`
         )
         setStats(data)
       } catch {}
       finally { setLoading(false) }
     }
-    fetch()
+    fetchStats()
   }, [currentWorkspace?._id])
 
   const hour = new Date().getHours()
