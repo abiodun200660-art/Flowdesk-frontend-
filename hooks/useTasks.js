@@ -18,7 +18,7 @@ export default function useTasks(filters = {}) {
         workspace: currentWorkspace._id,
         ...filters,
       })
-      const { data } = await api.get(/api/tasks?${params})
+      const { data } = await api.get('/api/tasks?${params})
       setTasks(data.tasks || [])
     } catch (err) {
       setError(err.response?.data?.message || 'Failed to load tasks')
