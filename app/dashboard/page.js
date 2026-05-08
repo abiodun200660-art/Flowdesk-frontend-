@@ -26,7 +26,7 @@ export default function DashboardPage() {
       setLoading(true)
       try {
         const { data } = await api.get(
-          '/api/analytics/overview?workspace=${currentWorkspace._id}
+          `/api/analytics/overview?workspace=${currentWorkspace._id}
         )
         setStats(data)
       } catch {}
