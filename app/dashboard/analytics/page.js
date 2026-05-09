@@ -1,4 +1,5 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 import DashboardLayout from '@/components/shared/DashboardLayout'
 import { BarChart2, Download, TrendingUp } from 'lucide-react'

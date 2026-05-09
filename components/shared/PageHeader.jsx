@@ -1,6 +1,4 @@
-// flowdesk-frontend/components/shared/PageHeader.jsx
-
-"use client";
+'use client'
 
 import { useState } from "react";
 import Link from "next/link";

@@ -1,6 +1,4 @@
-// flowdesk-frontend/components/shared/ThemeToggle.jsx
-
-"use client";
+'use client'
 
 import { useState, useEffect, useRef } from "react";
 

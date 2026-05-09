@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 const FREQUENCY_LABELS = {
   daily: { label: "Daily", icon: "🔁" },

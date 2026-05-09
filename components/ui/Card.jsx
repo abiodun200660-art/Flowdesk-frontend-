@@ -1,4 +1,4 @@
-// flowdesk-frontend/components/ui/Card.jsx
+'use client'
 
 import { useState } from "react";
 

@@ -1,6 +1,4 @@
-// flowdesk-frontend/components/shared/ServiceWorkerRegistrar.jsx
-
-"use client";
+'use client'
 
 import { useEffect, useState } from "react";
 

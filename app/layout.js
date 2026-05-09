@@ -1,3 +1,5 @@
+'use client'
+
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
 import { AuthProvider }      from '@/context/AuthContext'

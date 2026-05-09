@@ -1,4 +1,4 @@
-// flowdesk-frontend/components/ui/Spinner.jsx
+'use client'
 
 export default function Spinner({
   size = 24,

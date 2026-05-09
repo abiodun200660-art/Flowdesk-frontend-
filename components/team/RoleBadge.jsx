@@ -1,3 +1,5 @@
+'use client'
+
 import { Crown, User, Shield } from 'lucide-react'
 
 const ROLES = {

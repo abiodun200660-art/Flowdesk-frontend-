@@ -1,4 +1,4 @@
-// flowdesk-frontend/components/ui/Input.jsx
+'use client'
 
 import { useState, forwardRef } from "react";
 

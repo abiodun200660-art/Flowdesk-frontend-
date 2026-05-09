@@ -1,6 +1,4 @@
-// flowdesk-frontend/components/dashboard/UpcomingDeadlines.jsx
-
-"use client";
+'use client'
 
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";

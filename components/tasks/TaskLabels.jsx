@@ -1,4 +1,4 @@
-// flowdesk-frontend/components/tasks/TaskLabels.jsx
+'use client'
 
 import { useState, useRef, useEffect } from "react";
 

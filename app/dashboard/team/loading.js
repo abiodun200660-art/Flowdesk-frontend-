@@ -1,3 +1,5 @@
+'use client'
+
 import { Zap } from 'lucide-react'
 export default function Loading() {
   return (

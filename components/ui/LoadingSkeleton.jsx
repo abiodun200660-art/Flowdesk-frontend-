@@ -1,3 +1,5 @@
+'use client'
+
 export default function LoadingSkeleton({ rows = 5, height = 'h-12' }) {
   return (
     <div className="space-y-3">

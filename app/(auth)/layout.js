@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Zap, Users, BarChart3, Sparkles } from 'lucide-react'
 

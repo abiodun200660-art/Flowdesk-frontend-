@@ -1,6 +1,4 @@
-// flowdesk-frontend/components/auth/GoogleButton.jsx
-
-"use client";
+'use client'
 
 import { useState } from "react";
 

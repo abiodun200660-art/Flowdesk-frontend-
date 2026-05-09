@@ -1,4 +1,5 @@
 'use client'
+
 import { useState, useEffect, useRef } from 'react'
 import { Bell } from 'lucide-react'
 import { formatRelative } from '@/lib/utils'

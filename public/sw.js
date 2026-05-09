@@ -1,4 +1,5 @@
-**public/sw.js**
+'use client'
+
 const CACHE_NAME = 'flowdesk-v1'
 const STATIC_ASSETS = [
   '/',

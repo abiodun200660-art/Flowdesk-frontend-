@@ -1,6 +1,4 @@
-// flowdesk-frontend/components/dashboard/AIWeeklySummary.jsx
-
-"use client";
+'use client'
 
 import { useState, useEffect, useRef, useCallback } from "react";
 

@@ -1,4 +1,4 @@
-// flowdesk-frontend/components/tasks/TaskComments.jsx
+'use client'
 
 import { useState, useRef, useEffect, useCallback } from "react";
 

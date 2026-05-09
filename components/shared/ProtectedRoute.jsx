@@ -1,9 +1,4 @@
-// flowdesk-frontend/components/shared/ProtectedRoute.jsx
-// FIXED: Uses AuthContext (cookie-based session) instead of reading a fake localStorage token.
-// The old code only checked for "fd_token" in localStorage which was a mock — the real backend
-// uses httpOnly cookies. This component now uses the AuthContext which calls /api/auth/me.
-
-"use client";
+'use client'
 
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";

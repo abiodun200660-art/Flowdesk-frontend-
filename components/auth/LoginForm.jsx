@@ -1,7 +1,4 @@
-// flowdesk-frontend/components/auth/LoginForm.jsx
-// FIXED: Replaced mock login with real API call via AuthContext
-
-"use client";
+'use client'
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";

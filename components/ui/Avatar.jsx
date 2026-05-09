@@ -1,3 +1,5 @@
+'use client'
+
 import { getInitials, stringToColor } from '@/lib/utils'
 export default function Avatar({ user, size = 32, className = '' }) {
   const s = `${size}px`

@@ -1,4 +1,4 @@
-// flowdesk-frontend/components/tasks/TaskPrioritySelect.jsx
+'use client'
 
 import { useState, useRef, useEffect } from "react";
 

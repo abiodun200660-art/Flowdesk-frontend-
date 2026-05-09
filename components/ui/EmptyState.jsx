@@ -1,3 +1,5 @@
+'use client'
+
 export default function EmptyState({ icon: Icon, title, description, action }) {
   return (
     <div className="flex flex-col items-center justify-center py-16 text-center">
