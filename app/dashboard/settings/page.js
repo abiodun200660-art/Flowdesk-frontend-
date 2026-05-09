@@ -105,15 +105,21 @@ function WorkspaceTab() {
   )
 }
 
+// FIX: use lowercase 'component' key so it's not confused with JSX component syntax
 const TABS = [
-  { id: 'profile',   label: 'Profile',    icon: User,      Component: ProfileTab },
-  { id: 'security',  label: 'Security',   icon: Lock,      Component: SecurityTab },
-  { id: 'workspace', label: 'Workspace',  icon: Building2, Component: WorkspaceTab },
+  { id: 'profile',   label: 'Profile',   icon: User,      component: ProfileTab },
+  { id: 'security',  label: 'Security',  icon: Lock,      component: SecurityTab },
+  { id: 'workspace', label: 'Workspace', icon: Building2, component: WorkspaceTab },
 ]
 
 export default function SettingsPage() {
   const [active, setActive] = useState('profile')
-  const current = TABS.find(t => t.id === active)
+  const tab = TABS.find(t => t.id === active)
+
+  // FIX: Must assign to a CAPITALIZED variable — React only treats
+  // capitalized identifiers as components. <current.Component /> fails
+  // because React sees an object property, not a component reference.
+  const ActiveComponent = tab?.component
 
   return (
     <DashboardLayout>
@@ -129,8 +135,8 @@ export default function SettingsPage() {
             ))}
           </nav>
           <div className="flex-1 card p-6">
-            <h2 className="font-semibold text-gray-900 dark:text-white mb-5">{current?.label}</h2>
-            {current && <current.Component />}
+            <h2 className="font-semibold text-gray-900 dark:text-white mb-5">{tab?.label}</h2>
+            {ActiveComponent && <ActiveComponent />}
           </div>
         </div>
       </div>
