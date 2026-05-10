@@ -105,7 +105,6 @@ function WorkspaceTab() {
   )
 }
 
-// FIX: use lowercase 'component' key so it's not confused with JSX component syntax
 const TABS = [
   { id: 'profile',   label: 'Profile',   icon: User,      component: ProfileTab },
   { id: 'security',  label: 'Security',  icon: Lock,      component: SecurityTab },
@@ -115,10 +114,6 @@ const TABS = [
 export default function SettingsPage() {
   const [active, setActive] = useState('profile')
   const tab = TABS.find(t => t.id === active)
-
-  // FIX: Must assign to a CAPITALIZED variable — React only treats
-  // capitalized identifiers as components. <current.Component /> fails
-  // because React sees an object property, not a component reference.
   const ActiveComponent = tab?.component
 
   return (
